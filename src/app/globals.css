@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Brand — Deep Emerald */
+  --color-forest-50: #edf6f1;
+  --color-forest-100: #d8ecdf;
+  --color-forest-200: #b0d9c3;
+  --color-forest-300: #7fc0a1;
+  --color-forest-400: #4ba27e;
+  --color-forest-500: #22855f;
+  --color-forest-600: #0d6b47;
+  --color-forest-700: #0a5639;
+  --color-forest-800: #08442f;
+  --color-forest-900: #063626;
+  --color-forest-950: #04271a;
+
+  /* Fresh Green */
+  --color-leaf-50: #ecf9f2;
+  --color-leaf-100: #d3f1e2;
+  --color-leaf-200: #a7e3c5;
+  --color-leaf-300: #6ecda0;
+  --color-leaf-400: #3db583;
+  --color-leaf-500: #22a06b;
+  --color-leaf-600: #1a8558;
+  --color-leaf-700: #156a47;
+
+  /* Accent Blue */
+  --color-azure-50: #eef4ff;
+  --color-azure-100: #e0eaff;
+  --color-azure-200: #c2d6fe;
+  --color-azure-500: #2563eb;
+  --color-azure-600: #1d4fd7;
+  --color-azure-700: #1b43ab;
+
+  /* Amber warning */
+  --color-sun-50: #fef8ec;
+  --color-sun-100: #fdeed2;
+  --color-sun-200: #f9d9a0;
+  --color-sun-500: #d97706;
+  --color-sun-600: #b45309;
+  --color-sun-700: #92500a;
+
+  /* Neutrals */
+  --color-paper: #f7f9f7;
+  --color-ink: #17221c;
+  --color-mist: #68756d;
+  --color-line: #e3eae4;
+  --color-line-strong: #cfd9d1;
+
+  --shadow-soft: 0 1px 2px rgb(23 34 28 / 0.05), 0 8px 24px -8px rgb(23 34 28 / 0.08);
+  --shadow-lift: 0 2px 4px rgb(23 34 28 / 0.06), 0 16px 40px -12px rgb(13 107 71 / 0.18);
+  --shadow-glow: 0 0 0 4px rgb(34 160 107 / 0.12);
+
+  --radius-card: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-leaf-200);
+  color: var(--color-forest-900);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-leaf-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 8px;
+  border: 2px solid var(--color-paper);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ------------ micro animations ------------ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.6); }
+  70% { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes ping-dot {
+  0% { box-shadow: 0 0 0 0 rgb(34 160 107 / 0.5); }
+  80% { box-shadow: 0 0 0 10px rgb(34 160 107 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(34 160 107 / 0); }
+}
+@keyframes route-dash {
+  to { stroke-dashoffset: -28; }
+}
+@keyframes travel {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.anim-fade-up { animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in { animation: fade-in 0.4s ease both; }
+.anim-toast { animation: toast-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-pop { animation: pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-ping-dot { animation: ping-dot 2.2s ease-out infinite; }
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.12s; }
+.stagger-3 { animation-delay: 0.19s; }
+.stagger-4 { animation-delay: 0.26s; }
+
+/* subtle dotted pattern for auth side panels */
+.dot-grid {
+  background-image: radial-gradient(rgb(255 255 255 / 0.14) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+.dot-grid-ink {
+  background-image: radial-gradient(rgb(13 107 71 / 0.08) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #0d6b47 0%, #12835a 45%, #2563eb 130%);
+}
+.brand-gradient-soft {
+  background: linear-gradient(135deg, #edf6f1 0%, #e8f3ee 50%, #eef4ff 100%);
+}
+.text-brand-gradient {
+  background: linear-gradient(120deg, #0d6b47, #2563eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* animated dashed route on the tracking map */
+.map-route {
+  stroke-dasharray: 10 8;
+  animation: route-dash 1.4s linear infinite;
+}
+
+/* skeleton shimmer */
+.shimmer {
+  background: linear-gradient(90deg, #eef2ee 25%, #f8faf8 50%, #eef2ee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
